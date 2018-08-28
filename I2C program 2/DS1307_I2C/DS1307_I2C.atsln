@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "DS1307_I2C", "DS1307_I2C\DS1307_I2C.cproj", "{B8B548EF-5448-4DED-B6DE-69799BB2D5BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8B548EF-5448-4DED-B6DE-69799BB2D5BB}.Debug|AVR.ActiveCfg = Debug|AVR
+		{B8B548EF-5448-4DED-B6DE-69799BB2D5BB}.Debug|AVR.Build.0 = Debug|AVR
+		{B8B548EF-5448-4DED-B6DE-69799BB2D5BB}.Release|AVR.ActiveCfg = Release|AVR
+		{B8B548EF-5448-4DED-B6DE-69799BB2D5BB}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
