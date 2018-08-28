@@ -1,0 +1,393 @@
+
+SPI_PROJECT.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001d2  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         000000e0  00800060  000001d2  00000246  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .stab         000006cc  00000000  00000000  00000328  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000085  00000000  00000000  000009f4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 00000080  00000000  00000000  00000a80  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000402  00000000  00000000  00000b00  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000140  00000000  00000000  00000f02  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000036c  00000000  00000000  00001042  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000044  00000000  00000000  000013b0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000012e  00000000  00000000  000013f4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000070  00000000  00000000  00001522  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	11 e0       	ldi	r17, 0x01	; 1
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e2 ed       	ldi	r30, 0xD2	; 210
+  68:	f1 e0       	ldi	r31, 0x01	; 1
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a0 34       	cpi	r26, 0x40	; 64
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	11 e0       	ldi	r17, 0x01	; 1
+  78:	a0 e4       	ldi	r26, 0x40	; 64
+  7a:	b1 e0       	ldi	r27, 0x01	; 1
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a0 34       	cpi	r26, 0x40	; 64
+  82:	b1 07       	cpc	r27, r17
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 d8 00 	call	0x1b0	; 0x1b0 <main>
+  8a:	0c 94 e7 00 	jmp	0x1ce	; 0x1ce <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <transfer>:
+    {
+       keyscan();//ALWAYS CHECK WHETHER AN KEY IS PRESSED OR NOT AND IF KEY PRESSED THEN, TRANSFER THE NUMBER WRITTEN ON IT TO SLAVE USING SPI PROTOCOL.
+    }
+}
+void transfer(char *x) //DECLARATION OF TRANSFER FUNCTION
+{
+  92:	fc 01       	movw	r30, r24
+	
+	while(*x)
+  94:	80 81       	ld	r24, Z
+  96:	88 23       	and	r24, r24
+  98:	69 f0       	breq	.+26     	; 0xb4 <transfer+0x22>
+     while(1)
+    {
+       keyscan();//ALWAYS CHECK WHETHER AN KEY IS PRESSED OR NOT AND IF KEY PRESSED THEN, TRANSFER THE NUMBER WRITTEN ON IT TO SLAVE USING SPI PROTOCOL.
+    }
+}
+void transfer(char *x) //DECLARATION OF TRANSFER FUNCTION
+  9a:	31 96       	adiw	r30, 0x01	; 1
+{
+	
+	while(*x)
+	{
+		SPDR= *x++; // TRANSMIT ONE CHARACTER AT A TIME.
+  9c:	8f b9       	out	0x0f, r24	; 15
+	
+		while( (SPSR&(1<<SPIF))==0);// WAIT TILL DATA TRANSMITTED
+  9e:	77 9b       	sbis	0x0e, 7	; 14
+  a0:	fe cf       	rjmp	.-4      	; 0x9e <transfer+0xc>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  a2:	8f e4       	ldi	r24, 0x4F	; 79
+  a4:	93 ec       	ldi	r25, 0xC3	; 195
+  a6:	01 97       	sbiw	r24, 0x01	; 1
+  a8:	f1 f7       	brne	.-4      	; 0xa6 <transfer+0x14>
+  aa:	00 c0       	rjmp	.+0      	; 0xac <transfer+0x1a>
+  ac:	00 00       	nop
+    }
+}
+void transfer(char *x) //DECLARATION OF TRANSFER FUNCTION
+{
+	
+	while(*x)
+  ae:	81 91       	ld	r24, Z+
+  b0:	88 23       	and	r24, r24
+  b2:	a1 f7       	brne	.-24     	; 0x9c <transfer+0xa>
+  b4:	08 95       	ret
+
+000000b6 <keyscan>:
+	}
+}
+
+void keyscan()// WE HAVE STUDIED KEYSCAN FUNCTION IN "INTERFACING WITH KEYPAD" SECTON
+{
+	PORTA=PORTA&~(1<<col0);
+  b6:	dc 98       	cbi	0x1b, 4	; 27
+	PORTA=PORTA|(1<<col1)|(1<<col2)|(1<<col3);
+  b8:	8b b3       	in	r24, 0x1b	; 27
+  ba:	80 6e       	ori	r24, 0xE0	; 224
+  bc:	8b bb       	out	0x1b, r24	; 27
+	if( (PINA&(1<<row0))==0)
+  be:	c8 99       	sbic	0x19, 0	; 25
+  c0:	05 c0       	rjmp	.+10     	; 0xcc <keyscan+0x16>
+	{
+		transfer("key 7 pressed");
+  c2:	80 e6       	ldi	r24, 0x60	; 96
+  c4:	90 e0       	ldi	r25, 0x00	; 0
+  c6:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+  ca:	14 c0       	rjmp	.+40     	; 0xf4 <keyscan+0x3e>
+
+		
+	}
+	else if( (PINA&(1<<row1))==0)
+  cc:	c9 99       	sbic	0x19, 1	; 25
+  ce:	05 c0       	rjmp	.+10     	; 0xda <keyscan+0x24>
+	{
+		
+		transfer("key 4 pressed");
+  d0:	8e e6       	ldi	r24, 0x6E	; 110
+  d2:	90 e0       	ldi	r25, 0x00	; 0
+  d4:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+  d8:	0d c0       	rjmp	.+26     	; 0xf4 <keyscan+0x3e>
+	}
+	else if( (PINA&(1<<row2))==0)
+  da:	ca 99       	sbic	0x19, 2	; 25
+  dc:	05 c0       	rjmp	.+10     	; 0xe8 <keyscan+0x32>
+	{
+		
+		transfer("key 1 pressed");
+  de:	8c e7       	ldi	r24, 0x7C	; 124
+  e0:	90 e0       	ldi	r25, 0x00	; 0
+  e2:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+  e6:	06 c0       	rjmp	.+12     	; 0xf4 <keyscan+0x3e>
+	}
+	else if( (PINA&(1<<row3))==0)
+  e8:	cb 99       	sbic	0x19, 3	; 25
+  ea:	04 c0       	rjmp	.+8      	; 0xf4 <keyscan+0x3e>
+	{
+		
+		transfer("key O pressed");		
+  ec:	8a e8       	ldi	r24, 0x8A	; 138
+  ee:	90 e0       	ldi	r25, 0x00	; 0
+  f0:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+	}
+
+	PORTA=PORTA&~(1<<col1);
+  f4:	dd 98       	cbi	0x1b, 5	; 27
+	PORTA=PORTA|(1<<col0)|(1<<col2)|(1<<col3);
+  f6:	8b b3       	in	r24, 0x1b	; 27
+  f8:	80 6d       	ori	r24, 0xD0	; 208
+  fa:	8b bb       	out	0x1b, r24	; 27
+
+	if( (PINA&(1<<row0))==0)
+  fc:	c8 99       	sbic	0x19, 0	; 25
+  fe:	05 c0       	rjmp	.+10     	; 0x10a <keyscan+0x54>
+	{
+		
+		transfer("key 8 pressed");
+ 100:	88 e9       	ldi	r24, 0x98	; 152
+ 102:	90 e0       	ldi	r25, 0x00	; 0
+ 104:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+ 108:	14 c0       	rjmp	.+40     	; 0x132 <keyscan+0x7c>
+	}
+	else if( (PINA&(1<<row1))==0)
+ 10a:	c9 99       	sbic	0x19, 1	; 25
+ 10c:	05 c0       	rjmp	.+10     	; 0x118 <keyscan+0x62>
+	{
+		
+		transfer("key 5 pressed");
+ 10e:	86 ea       	ldi	r24, 0xA6	; 166
+ 110:	90 e0       	ldi	r25, 0x00	; 0
+ 112:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+ 116:	0d c0       	rjmp	.+26     	; 0x132 <keyscan+0x7c>
+	}
+	else if( (PINA&(1<<row2))==0)
+ 118:	ca 99       	sbic	0x19, 2	; 25
+ 11a:	05 c0       	rjmp	.+10     	; 0x126 <keyscan+0x70>
+	{
+		
+		transfer("key 2 pressed");
+ 11c:	84 eb       	ldi	r24, 0xB4	; 180
+ 11e:	90 e0       	ldi	r25, 0x00	; 0
+ 120:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+ 124:	06 c0       	rjmp	.+12     	; 0x132 <keyscan+0x7c>
+	}
+	else if( (PINA&(1<<row3))==0)
+ 126:	cb 99       	sbic	0x19, 3	; 25
+ 128:	04 c0       	rjmp	.+8      	; 0x132 <keyscan+0x7c>
+	{
+		
+		transfer("key 0 pressed");
+ 12a:	82 ec       	ldi	r24, 0xC2	; 194
+ 12c:	90 e0       	ldi	r25, 0x00	; 0
+ 12e:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+	}
+
+	PORTA=PORTA&~(1<<col2);
+ 132:	de 98       	cbi	0x1b, 6	; 27
+	PORTA=PORTA|(1<<col0)|(1<<col1)|(1<<col3);
+ 134:	8b b3       	in	r24, 0x1b	; 27
+ 136:	80 6b       	ori	r24, 0xB0	; 176
+ 138:	8b bb       	out	0x1b, r24	; 27
+	if( (PINA&(1<<row0))==0)
+ 13a:	c8 99       	sbic	0x19, 0	; 25
+ 13c:	05 c0       	rjmp	.+10     	; 0x148 <keyscan+0x92>
+	{
+		
+		transfer("key 9 pressed");
+ 13e:	80 ed       	ldi	r24, 0xD0	; 208
+ 140:	90 e0       	ldi	r25, 0x00	; 0
+ 142:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+ 146:	14 c0       	rjmp	.+40     	; 0x170 <keyscan+0xba>
+	}
+	else if( (PINA&(1<<row1))==0)
+ 148:	c9 99       	sbic	0x19, 1	; 25
+ 14a:	05 c0       	rjmp	.+10     	; 0x156 <keyscan+0xa0>
+	{
+		
+		transfer("key 6 pressed");
+ 14c:	8e ed       	ldi	r24, 0xDE	; 222
+ 14e:	90 e0       	ldi	r25, 0x00	; 0
+ 150:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+ 154:	0d c0       	rjmp	.+26     	; 0x170 <keyscan+0xba>
+	}
+	else if( (PINA&(1<<row2))==0)
+ 156:	ca 99       	sbic	0x19, 2	; 25
+ 158:	05 c0       	rjmp	.+10     	; 0x164 <keyscan+0xae>
+	{
+		
+		transfer("key 3 pressed");
+ 15a:	8c ee       	ldi	r24, 0xEC	; 236
+ 15c:	90 e0       	ldi	r25, 0x00	; 0
+ 15e:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+ 162:	06 c0       	rjmp	.+12     	; 0x170 <keyscan+0xba>
+	}
+	else if( (PINA&(1<<row3))==0)
+ 164:	cb 99       	sbic	0x19, 3	; 25
+ 166:	04 c0       	rjmp	.+8      	; 0x170 <keyscan+0xba>
+	{
+		
+		transfer("key = pressed");
+ 168:	8a ef       	ldi	r24, 0xFA	; 250
+ 16a:	90 e0       	ldi	r25, 0x00	; 0
+ 16c:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+	}
+	PORTA=PORTA&~(1<<col3);
+ 170:	df 98       	cbi	0x1b, 7	; 27
+	PORTA=PORTA|(1<<col0)|(1<<col1)|(1<<col2);
+ 172:	8b b3       	in	r24, 0x1b	; 27
+ 174:	80 67       	ori	r24, 0x70	; 112
+ 176:	8b bb       	out	0x1b, r24	; 27
+
+	if( (PINA&(1<<row0))==0)
+ 178:	c8 99       	sbic	0x19, 0	; 25
+ 17a:	05 c0       	rjmp	.+10     	; 0x186 <keyscan+0xd0>
+	{
+	
+		transfer("key / pressed");
+ 17c:	88 e0       	ldi	r24, 0x08	; 8
+ 17e:	91 e0       	ldi	r25, 0x01	; 1
+ 180:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+ 184:	08 95       	ret
+	}
+	else if( (PINA&(1<<row1))==0)
+ 186:	c9 99       	sbic	0x19, 1	; 25
+ 188:	05 c0       	rjmp	.+10     	; 0x194 <keyscan+0xde>
+	{
+		
+		transfer("key x pressed");
+ 18a:	86 e1       	ldi	r24, 0x16	; 22
+ 18c:	91 e0       	ldi	r25, 0x01	; 1
+ 18e:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+ 192:	08 95       	ret
+	}
+	else if( (PINA&(1<<row2))==0)
+ 194:	ca 99       	sbic	0x19, 2	; 25
+ 196:	05 c0       	rjmp	.+10     	; 0x1a2 <keyscan+0xec>
+	{
+	
+	transfer("key - pressed");
+ 198:	84 e2       	ldi	r24, 0x24	; 36
+ 19a:	91 e0       	ldi	r25, 0x01	; 1
+ 19c:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+ 1a0:	08 95       	ret
+	}
+	else if( (PINA&(1<<row3))==0)
+ 1a2:	cb 99       	sbic	0x19, 3	; 25
+ 1a4:	04 c0       	rjmp	.+8      	; 0x1ae <keyscan+0xf8>
+	{
+			transfer("key + pressed");
+ 1a6:	82 e3       	ldi	r24, 0x32	; 50
+ 1a8:	91 e0       	ldi	r25, 0x01	; 1
+ 1aa:	0e 94 49 00 	call	0x92	; 0x92 <transfer>
+ 1ae:	08 95       	ret
+
+000001b0 <main>:
+#define col2 6
+#define col3 7
+
+int main(void)
+{
+	DDRA=0b11110000; //SET THESE FOR KEYPAD
+ 1b0:	80 ef       	ldi	r24, 0xF0	; 240
+ 1b2:	8a bb       	out	0x1a, r24	; 26
+	PORTA=0b00001111;//SET THESE FOR KEYPAD
+ 1b4:	8f e0       	ldi	r24, 0x0F	; 15
+ 1b6:	8b bb       	out	0x1b, r24	; 27
+	
+	DDRB=DDRB|(1<<PINB4); //SET SS BIT AS OUTPUT
+ 1b8:	bc 9a       	sbi	0x17, 4	; 23
+	DDRB=DDRB|(1<<PINB5);//SET SS BIT AS OUTPUT
+ 1ba:	bd 9a       	sbi	0x17, 5	; 23
+	DDRB=DDRB&~(1<<PINB6);//SET MISO BIT AS INPUT
+ 1bc:	be 98       	cbi	0x17, 6	; 23
+	DDRB=DDRB|(1<<PINB7);//SET SS BIT AS OUTPUT
+ 1be:	bf 9a       	sbi	0x17, 7	; 23
+	
+    SPCR=SPCR|(1<<SPE)|(1<<SPR0)|(1<<MSTR);// SET SPI ENABLE BIT, SET SPEED OF SPI,SET MSTR BIT TO USE MASTER MODE 
+ 1c0:	8d b1       	in	r24, 0x0d	; 13
+ 1c2:	81 65       	ori	r24, 0x51	; 81
+ 1c4:	8d b9       	out	0x0d, r24	; 13
+	SPSR=SPSR|(1<<SPI2X);// DOUBLE THE SPEED OF SPI
+ 1c6:	70 9a       	sbi	0x0e, 0	; 14
+	 
+     while(1)
+    {
+       keyscan();//ALWAYS CHECK WHETHER AN KEY IS PRESSED OR NOT AND IF KEY PRESSED THEN, TRANSFER THE NUMBER WRITTEN ON IT TO SLAVE USING SPI PROTOCOL.
+ 1c8:	0e 94 5b 00 	call	0xb6	; 0xb6 <keyscan>
+ 1cc:	fd cf       	rjmp	.-6      	; 0x1c8 <main+0x18>
+
+000001ce <_exit>:
+ 1ce:	f8 94       	cli
+
+000001d0 <__stop_program>:
+ 1d0:	ff cf       	rjmp	.-2      	; 0x1d0 <__stop_program>
